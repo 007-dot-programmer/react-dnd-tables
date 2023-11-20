@@ -1,0 +1,38 @@
+{
+  "name": "react-dnd-material-ui",
+  "main": "src/index.js",
+  "description": "react drag n drop with material-ui table",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@material-ui/core": "4.8.3",
+    "babel-jest": "23.6.0",
+    "faker": "^4.1.0",
+    "immutability-helper": "^3.0.0",
+    "react": "16.8.4",
+    "react-dnd": "10.0.2",
+    "react-dnd-html5-backend": "10.0.2",
+    "react-dom": "16.8.4",
+    "react-frame-component": "^4.1.0",
+    "react-scripts": "2.1.8"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "keywords": [
+    "drag",
+    "drop",
+    "material",
+    "material-ui",
+    "react"
+  ]
+}
