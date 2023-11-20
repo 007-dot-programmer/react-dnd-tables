@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -6,7 +6,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import Paper from "@material-ui/core/Paper";
 
-import Card from "./Card";
+import DnDTableRow from "./DnDTableRow";
 import update from "immutability-helper";
 
 const useStyles = makeStyles({
@@ -19,28 +19,36 @@ const Container = (props) => {
   {
     const classes = useStyles();
 
-    const cards = props.cards;
-
+    const {rows, tableId, onChangeData} = props;    
     
-    const moveCard = (dragIndex, hoverIndex) => {
-      const dragCard = cards[dragIndex];
-      setCards(
-        update(cards, {
-          $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]]
+    const removeRow = (index) => {
+      onChangeData(
+        update(rows, {$splice: [[index, 1]]})
+      );
+    }
+
+    const insertRow = (index, row) => {
+      onChangeData(
+        update(rows, {
+          $splice: [[index, 0, row]]
         })
       );
-    };
+      
+    }
+    
     return (
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableBody>
-            {cards.map((card, i) => (
-              <Card
-                key={card.id}
+            {rows.map((row, i) => (
+              <DnDTableRow
+                key={row.id}
                 index={i}
-                id={card.id}
-                cardInfo={card}
-                moveCard={moveCard}
+                id={row.id}
+                tableId={tableId}
+                rowInfo={row}
+                removeRow={removeRow}
+                insertRow={insertRow}
               />
             ))}
           </TableBody>
